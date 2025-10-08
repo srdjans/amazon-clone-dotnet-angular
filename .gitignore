@@ -1,1 +1,86 @@
+# ---- Build Artifacts ----
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+[Ll]ogs/
+[Tt]est[Rr]esults/
+[Bb]enchmarkDotNet.Artifacts/
+
+# ---- User / IDE Settings ----
 .vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# ---- OS Generated Files ----
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# ---- Package Managers ----
+# NuGet
+*.nupkg
+*.snupkg
+# npm / yarn
+node_modules/
+# Python (if using scripts)
+__pycache__/
+
+# ---- Build Output / Publish ----
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+*.diff
+*.orig
+*.rej
+*.sdf
+*.dbmdl
+*.bak
+*.backup
+*.mdf
+*.ldf
+*.ndf
+
+# ---- Rider / JetBrains ----
+.idea/
+*.DotSettings.user
+
+# ---- Coverage / Analysis ----
+coverage/
+*.coverage
+*.coveragexml
+*.codecov
+TestResults/
+*.trx
+*.opencover.xml
+
+# ---- Docker ----
+**/docker-compose.override.yml
+**/docker-compose.vs.debug.yml
+**/docker-compose.vs.release.yml
+
+# ---- Publish Profiles ----
+**/Properties/PublishProfiles/
+*.pubxml
+*.publishsettings
+
+# ---- Misc ----
+# Local environment variables or secrets
+.env
+.env.local
+*.secret.json
+secrets.json
+
+# ---- Temporary ----
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
