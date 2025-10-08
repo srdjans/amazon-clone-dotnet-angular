@@ -5,9 +5,7 @@ VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{0D70C338-0EDE-46E6-93C6-78750BE01EA9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog", "Catalog\Catalog\Catalog.csproj", "{32C84118-9156-4A42-B3FA-A8273F2D40F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog", "Catalog\Catalog.csproj", "{32C84118-9156-4A42-B3FA-A8273F2D40F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,8 +22,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{0D70C338-0EDE-46E6-93C6-78750BE01EA9} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
-		{32C84118-9156-4A42-B3FA-A8273F2D40F1} = {0D70C338-0EDE-46E6-93C6-78750BE01EA9}
+		{32C84118-9156-4A42-B3FA-A8273F2D40F1} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {48A979DE-533B-46FE-81AD-F7204D854AA2}
