@@ -26,10 +26,31 @@ namespace Catalog.Repositories
             return await _products.Find(p => true).ToListAsync();
         }
 
-        public Task<Pagination<Product>> GetProductsAsync(CatalogSpecParams specParams)
+        public async Task<Pagination<Product>> GetProductsAsync(CatalogSpecParams specParams)
         {
-            throw new NotImplementedException();
-        }
+            var builder = Builders<Product>.Filter;
+            var filter = builder.Empty;
+
+            if (!string.IsNullOrEmpty(specParams.Search))
+            {
+                filter &= builder.Text(specParams.Search);
+            }
+
+            if (!string.IsNullOrEmpty(specParams.BrandId))
+            {
+                filter &= builder.Eq(p => p.Brand.Id, specParams.BrandId);
+            }
+
+            if (!string.IsNullOrEmpty(specParams.TypeId))
+            {
+                filter &= builder.Eq(p => p.Type.Id, specParams.TypeId);
+            }
+
+            var totalItems = await _products.CountDocumentsAsync(filter);
+            var data = await ApplyDataFilters(specParams, filter);
+
+            return new Pagination<Product>(specParams.PageIndex, specParams.PageSize, (int)totalItems, data);
+        } 
 
         public async Task<Product> GetProductByIdAsync(string id)
         {
@@ -76,6 +97,22 @@ namespace Catalog.Repositories
         public async Task<ProductType> GetTypeByIdAsync(string typeId)
         {
             return await _types.Find(t => t.Id == typeId).FirstOrDefaultAsync();
+        }
+
+        private async Task<IReadOnlyCollection<Product>> ApplyDataFilters(CatalogSpecParams specParams, FilterDefinition<Product> filter)
+        {
+            var sortDefinition = specParams.Sort switch
+            {
+                "priceAsc" => Builders<Product>.Sort.Ascending(p => p.Price),
+                "priceDesc" => Builders<Product>.Sort.Descending(p => p.Price),
+                _ => Builders<Product>.Sort.Ascending(p => p.Name)
+            };
+
+            return await _products.Find(filter)
+                .Sort(sortDefinition)
+                .Skip(specParams.PageSize * (specParams.PageIndex - 1))
+                .Limit(specParams.PageSize)
+                .ToListAsync();
         }
     }
 }
