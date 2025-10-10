@@ -3,7 +3,7 @@ using Catalog.Responses;
 
 namespace Catalog.Extensions
 {
-    public static class BrandExtension
+    public static class BrandMapper
     {
         public static BrandResponse ToResponse(this ProductBrand brand)
         {
